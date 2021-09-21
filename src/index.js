@@ -30,7 +30,7 @@ app.post('/users', (request, response) => {
 });
 
 app.get('/todos', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
+  const 
 });
 
 app.post('/todos', checksExistsUserAccount, (request, response) => {
