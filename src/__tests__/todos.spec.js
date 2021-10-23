@@ -20,15 +20,21 @@ describe('Todos', () => {
         title: 'test todo',
         deadline: todoDate
       })
-      .set('username', userResponse.body.username);
+      .set('username', 'user1');
 
     const response = await request(app)
       .get('/todos')
-      .set('username', userResponse.body.username);
+      .set('username','user1');
 
-    expect(response.body).toEqual(
+    expect(response.body['message']).toEqual(
       expect.arrayContaining([
-        todoResponse.body
+        {
+          id: todoResponse.body['message']['id'],
+          title: todoResponse.body['message']['title'],
+          done: false,
+          deadline: todoDate,
+          created_at: todoResponse.body['message']['created_at']
+        }
       ]),
     )
   });
